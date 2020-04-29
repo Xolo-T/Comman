@@ -5,20 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
+    
     <title>Comman</title>
 </head>
 
 <body>
-    <h1>Hi! I am Comman.</h1>
-    <p>I solve Sudoky like chewing gum</p>
-    <canvas 
-        id="sudoku-grid"
-        style="border:2px solid #000000;"
-        width="500" height="500"  
-        >
-        <!-- style="background-color: #35506c;" -->
-    </canvas>
+<body>
+    <div class='container'>
+        <h1 class='title'>Sudoku Solver X</h1>
+        <div class='game-view'>
+            <div class='board'>
+                <canvas id="canvas-board" width="450" height="450" style="border:1px solid #000000;">
+                </canvas>
+
+
+            </div>
+
+            <div class='controls'>
+                <div class='controls-buttons'>
+                    <button id='solve'>Solve</button>
+                    <button id='new-Board' >New Board</button>
+                </div>
+
+                <fieldset class='slider-box'>
+                    <legend>Animation Speed</legend>
+                    fast <input id='slider' type='range' min='0' max='200'> slow
+                </fieldset>
+
+                <button id="skip-animation">Skip Animation</button>
+
+                <div class='iterations'>
+                    Iterations:
+                    <span id='iteration-count'>0</span>
+                </div>
+
+                <button id='create'> Create A Board </button>
+
+                <br /><br />
+                <fieldset class='instructions-container'>
+                    <legend>Instructions</legend>
+                    <div class='instructions'>
+                        Move the cursor with the arrow keys or mouse. <br /><br />
+                        Insert any number from 1 to 9.<br /><br />
+                        Hit space to clear a number.<br /><br />
+                        Click Solve when finished.
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+    </div>
+    <script src="./dist/main.js"></script>
+    <script>
+
+    </script>
 </body>
 
 </html>
