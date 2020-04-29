@@ -1,3 +1,5 @@
+import puzzleArrays from "./puzzles";
+
 class Grid{
     constructor(context){
         this.context = context;
@@ -29,10 +31,18 @@ class Grid{
             this.context.lineTo(450, j * 50);
             this.context.stroke();
         }
-
-
-
     }
+
+    fill() {
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 9; j++) {
+
+            }
+        }
+        this.context.font = "30px Arial green";
+        this.context.fillText(8, 12, 33);
+    }
+
 }
 
 export default Grid;
