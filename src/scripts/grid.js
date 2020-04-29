@@ -34,13 +34,24 @@ class Grid{
     }
 
     fill() {
+        const puzzle = puzzleArrays[1]
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 9; j++) {
-
+                let numValue = puzzle[i][j];
+                if (numValue === 0){
+                    numValue = ""
+                }
+                this.context.beginPath();
+                // this math here is bananas i still fully dont get it
+                this.context.rect(j * 50 + 4, i * 50 + 2, 40, 40);
+                this.context.fillStyle = 'white';
+                this.context.fill();
+                this.context.font = '38px sans-serif';
+                this.context.fillStyle = 'red';
+                let size = 49;
+                this.context.fillText(numValue, j * size + 25, i * size + 45);
             }
         }
-        this.context.font = "30px Arial green";
-        this.context.fillText(8, 12, 33);
     }
 
 }
