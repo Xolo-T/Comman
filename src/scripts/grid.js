@@ -3,6 +3,7 @@ import puzzleArrays from "./puzzles";
 class Grid{
     constructor(context){
         this.context = context;
+        // this.puzzle = puzzleArrays[1]
     }
     
     render(){
@@ -33,8 +34,8 @@ class Grid{
         }
     }
 
-    fill() {
-        const puzzle = puzzleArrays[1]
+    fill(puzzle) {
+        // const puzzle = puzzleArrays[1]
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 9; j++) {
                 let numValue = puzzle[i][j];
