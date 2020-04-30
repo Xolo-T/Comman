@@ -12,17 +12,6 @@ let puzzleIndex = 0;
 let changeChecker = 0;
 const puzzles = puzzleArrays;
 
-// function changePuzzle() {
-//     debugger
-//     if (puzzleIndex < (puzzles.length - 1)) {
-//         puzzleIndex += 1;
-//     }else{
-//         puzzleIndex = 0;
-//     }
-//     debugger
-//     myGrid.fill(puzzles[puzzleIndex]);
-// }
-
 const nextPuzzleButton = document.getElementById('next-puzzle');
 nextPuzzleButton.onclick = changePuzzle
 
