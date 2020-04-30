@@ -1,15 +1,34 @@
 import Grid from "./scripts/grid";
 import puzzleArrays from "./scripts/puzzles"
 
-
-
-let canvas = document.getElementById('canvas-board');
-let context = canvas.getContext('2d');
+const canvas = document.getElementById('canvas-board');
+const context = canvas.getContext('2d');
 const myGrid = new Grid(context)
 myGrid.render()
 
-const puzzle = puzzleArrays[2]
-myGrid.fill(puzzle)
+
+let puzzleIndex = 0;
+let changeChecker = 0;
+const puzzles = puzzleArrays;
+
+function changePuzzle() {
+    debugger
+    if (puzzleIndex < (puzzles.length - 1)) {
+        puzzleIndex += 1;
+    }else{
+        puzzleIndex = 0;
+    }
+    debugger
+    myGrid.fill(puzzles[puzzleIndex]);
+}
+
+const nextPuzzleButton = document.getElementById('next-puzzle');
+nextPuzzleButton.onclick = changePuzzle
+
+const puzzle = puzzles[puzzleIndex];
+debugger
+myGrid.fill(puzzle);
+
 
 function isValidSudoku(sudoku) {
     // debugger
@@ -27,7 +46,7 @@ function isValidSudoku(sudoku) {
         for (let j = 0; j < 9; j++) {
             const currentValue = sudoku[i][j]
             if (currentValue !== 0){
-                debugger
+                // debugger
                 // Cheking the rows
                 if (rows[i].includes(currentValue)) {
                     return false
@@ -43,13 +62,13 @@ function isValidSudoku(sudoku) {
                 // Cheking the subgrig some math will be involved
                 // const k = 'bananas';
                 const k = Math.floor((j) / 3) + Math.floor((i) / 3) * 3
-                debugger
+                // debugger
                 if (SubGrid[k].includes(currentValue)) {
                     return false
                 } else {
                     SubGrid[k].push(currentValue)
                 }
-                debugger
+                // debugger
             }
         }   
     }
@@ -58,3 +77,4 @@ function isValidSudoku(sudoku) {
 
 const validity = document.getElementById('validity');
 validity.innerText = isValidSudoku(puzzle);
+
