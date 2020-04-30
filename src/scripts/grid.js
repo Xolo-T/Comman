@@ -55,6 +55,7 @@ class Grid{
                 if (numValue === 0){
                     numValue = ""
                 }
+            // Cover up the prev num using a white rectangle
                 this.context.beginPath();
                 // this math here is bananas i still fully dont get it
             // this.context.rect(startLeft,startTop, width, height);
@@ -62,7 +63,9 @@ class Grid{
                 // this.context.rect(j * 50 + 4, i * 50 + 2, 40, 40);
                 this.context.fillStyle = 'white';
                 this.context.fill();
-                this.context.font = '38px sans-serif';
+            // ---------------------------------------------------------
+            // put a new number on the rectangle
+                this.context.font = '35px sans-serif';
                 this.context.fillStyle = 'red';
                 let size = 49;
             // this.context.fillText(text, startLeft, startTop);
