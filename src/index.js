@@ -1,5 +1,6 @@
 import Grid from "./scripts/grid";
 import puzzleArrays from "./scripts/puzzles"
+import "./styles/index.scss"
 
 const canvas = document.getElementById('canvas-board');
 const context = canvas.getContext('2d');
@@ -11,16 +12,16 @@ let puzzleIndex = 0;
 let changeChecker = 0;
 const puzzles = puzzleArrays;
 
-function changePuzzle() {
-    debugger
-    if (puzzleIndex < (puzzles.length - 1)) {
-        puzzleIndex += 1;
-    }else{
-        puzzleIndex = 0;
-    }
-    debugger
-    myGrid.fill(puzzles[puzzleIndex]);
-}
+// function changePuzzle() {
+//     debugger
+//     if (puzzleIndex < (puzzles.length - 1)) {
+//         puzzleIndex += 1;
+//     }else{
+//         puzzleIndex = 0;
+//     }
+//     debugger
+//     myGrid.fill(puzzles[puzzleIndex]);
+// }
 
 const nextPuzzleButton = document.getElementById('next-puzzle');
 nextPuzzleButton.onclick = changePuzzle
@@ -78,3 +79,14 @@ function isValidSudoku(sudoku) {
 const validity = document.getElementById('validity');
 validity.innerText = isValidSudoku(puzzle);
 
+function changePuzzle() {
+    debugger
+    if (puzzleIndex < (puzzles.length - 1)) {
+        puzzleIndex += 1;
+    } else {
+        puzzleIndex = 0;
+    }
+    debugger
+    myGrid.fill(puzzles[puzzleIndex]);
+    validity.innerText = isValidSudoku(puzzles[puzzleIndex]);
+}
