@@ -4,19 +4,20 @@ import "./styles/index.scss"
 
 const canvas = document.getElementById('canvas-board');
 const context = canvas.getContext('2d');
-const myGrid = new Grid(context)
-myGrid.render()
 
 
 let puzzleIndex = 0;
 let changeChecker = 0;
 const puzzles = puzzleArrays;
 
+
 const nextPuzzleButton = document.getElementById('next-puzzle');
 nextPuzzleButton.onclick = changePuzzle
 
 const puzzle = puzzles[puzzleIndex];
-debugger
+// debugger
+const myGrid = new Grid(context, puzzle)
+myGrid.render()
 myGrid.fill(puzzle);
 
 
@@ -79,3 +80,23 @@ function changePuzzle() {
     myGrid.fill(puzzles[puzzleIndex]);
     validity.innerText = isValidSudoku(puzzles[puzzleIndex]);
 }
+
+function solve() {
+    debugger
+    // hideInstructions();
+    // myGrid.deactivateInput();
+    // myGrid.board.solveSudoku();
+    myGrid.solveSudoku();
+    // myGrid.animate();
+    if (myGrid.paused) {
+        myGrid.paused = !myGrid.paused;
+        myGrid.animate();
+        document.getElementById('solve').textContent = 'Pause';
+    } else {
+        myGrid.paused = !myGrid.paused;
+        document.getElementById('solve').textContent = 'Solve';
+    }
+}
+
+var solveButton = document.getElementById('solve');
+solveButton.onclick = solve;
