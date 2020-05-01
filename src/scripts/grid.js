@@ -55,11 +55,12 @@ class Grid{
         }
     }
 
-    fill(puzzle) {
+    fill() {
+        // fill(puzzle) {
         // const puzzle = puzzleArrays[1]
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 9; j++) {
-                let numValue = puzzle[i][j];
+                let numValue = this.puzzle[i][j];
                 if (numValue === 0){
                     numValue = ""
                 }
@@ -82,7 +83,7 @@ class Grid{
         }
     }
 
-    //---------- Solving Algo from https://github.com/momajd ------------------
+    //---------- Puzzle Solving Algo from https://github.com/momajd ------------------
     
     renderTile(tile) {
         debugger
@@ -148,7 +149,7 @@ class Grid{
                     // debugger
                     this.puzzle[i][j] = vals[k];
 
-                    let tile = new Tile(vals[k], i, j, this.boardSize / 9, 'green', '35px Permanent Marker');
+                    let tile = new Tile(vals[k], i, j, this.boardSize / 9, 'green', '30px Permanent Marker');
                     // debugger
                     this.addToAnimationQueue(tile);
                     // debugger
@@ -177,7 +178,7 @@ class Grid{
 
         let self = this;
         let timing = document.getElementById('slider').value;
-        debugger
+        // debugger
         setTimeout(function () {
             if (tile.val === "") {
                 self.clearTile(tile);

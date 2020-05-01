@@ -16,9 +16,10 @@ nextPuzzleButton.onclick = changePuzzle
 
 const puzzle = puzzles[puzzleIndex];
 // debugger
-const myGrid = new Grid(context, puzzle)
+// const myGrid = new Grid(context, puzzle)
+let myGrid = new Grid(context, puzzles[puzzleIndex])
 myGrid.render()
-myGrid.fill(puzzle);
+myGrid.fill();
 
 
 function isValidSudoku(sudoku) {
@@ -70,15 +71,19 @@ const validity = document.getElementById('validity');
 validity.innerText = isValidSudoku(puzzle);
 
 function changePuzzle() {
-    debugger
+    // debugger
     if (puzzleIndex < (puzzles.length - 1)) {
         puzzleIndex += 1;
     } else {
         puzzleIndex = 0;
     }
-    debugger
-    myGrid.fill(puzzles[puzzleIndex]);
+    // debugger
+    myGrid = new Grid(context, puzzles[puzzleIndex])
+    // debugger
+    myGrid.fill();
     validity.innerText = isValidSudoku(puzzles[puzzleIndex]);
+
+
 }
 
 function solve() {
