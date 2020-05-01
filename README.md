@@ -12,7 +12,7 @@ With Comman, users will be able to:
 * Implement solving animation
 * View the number of iterations taken to solve a puzzle
 ### Bonus
-* Instatntly solve sudoku puzzle (skip animation)
+* Instantly solve sudoku puzzle (skip animation)
 * Create a custom board by simply inputing numbers
 
 
