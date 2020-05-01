@@ -10,9 +10,16 @@ let puzzleIndex = 0;
 let changeChecker = 0;
 const puzzles = puzzleArrays;
 
+const solveButton = document.getElementById('solve');
+solveButton.onclick = solve;
 
 const nextPuzzleButton = document.getElementById('next-puzzle');
 nextPuzzleButton.onclick = changePuzzle
+
+const animationSpeed = document.getElementById('animation-speed')
+const iterationsDiv = document.getElementById('iterations-div')
+const validityStatus = document.getElementById('validity-status')
+const controlsButtonsDiv = document.getElementById('controls-buttons')
 
 const puzzle = puzzles[puzzleIndex];
 // debugger
@@ -82,7 +89,31 @@ function changePuzzle() {
     // debugger
     myGrid.fill();
     validity.innerText = isValidSudoku(puzzles[puzzleIndex]);
+    if (!isValidSudoku(puzzles[puzzleIndex])) {
+        solveButton.style.display = 'none';
+        animationSpeed.style.display = 'none';
+        iterationsDiv.style.display = 'none';
+        validityStatus.style.display = 'flex';
+        validityStatus.style.justifyContent = 'center';
+        controlsButtonsDiv.style.justifyContent = 'flex-end';
+        debugger
 
+        // validOnlyElements.forEach(element => {
+        //     element.style.display = 'none'
+        // });
+    }else{
+        solveButton.style.display = 'inline-block';
+        animationSpeed.style.display = 'block';
+        iterationsDiv.style.display = 'block';
+        validityStatus.style.display = 'none';
+        controlsButtonsDiv.style.justifyContent = 'space-between';
+        // validOnlyElements.forEach(element => {
+        //     element.style.display = 'block'
+        // });
+    }
+
+    // myGrid.paused = !myGrid.paused;
+    document.getElementById('solve').textContent = 'Solve';
 
 }
 
@@ -103,5 +134,5 @@ function solve() {
     }
 }
 
-var solveButton = document.getElementById('solve');
-solveButton.onclick = solve;
+// var solveButton = document.getElementById('solve');
+// solveButton.onclick = solve;

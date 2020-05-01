@@ -3,4 +3,20 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background: linear-gradient(284.67deg, #00497a, #007acc 83.92%); */
+}
+
+#validity-status{
+     display: none;
+     background-color: whitesmoke;
+}
+
+#validity{
+     display: inline-block;
+     color: red;
+}
+
+#controls-buttons {
+    display: flex;
+    justify-content: space-between;
 }

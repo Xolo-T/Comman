@@ -75,7 +75,7 @@ class Grid{
             // ---------------------------------------------------------
             // put a new number on the rectangle
                 this.context.font = '35px sans-serif';
-                this.context.fillStyle = 'red';
+                this.context.fillStyle = '#007acc';
                 let size = 49;
             // this.context.fillText(text, startLeft, startTop);
                 this.context.fillText(numValue, j * size + 21, i * size + 45);
@@ -91,11 +91,13 @@ class Grid{
         let size = tile.tileSize;
         this.context.font = tile.font;
         this.context.fillStyle = tile.color;
+        // ctx.fillText("Hello World!", x, y);
         this.context.fillText(tile.val, tile.col * size + 25, tile.row * size + 45);
     }
 
     clearTile(tile) {
         this.context.beginPath();
+        // this.context.rect(startLeft,startTop, width, height);
         this.context.rect(
             tile.col * tile.tileSize + 1 / 10 * tile.tileSize,
             tile.row * tile.tileSize + 1 / 10 * tile.tileSize,
@@ -149,7 +151,7 @@ class Grid{
                     // debugger
                     this.puzzle[i][j] = vals[k];
 
-                    let tile = new Tile(vals[k], i, j, this.boardSize / 9, 'green', '30px Permanent Marker');
+                    let tile = new Tile(vals[k], i, j, this.boardSize / 9, '#ababab', '30px Permanent Marker');
                     // debugger
                     this.addToAnimationQueue(tile);
                     // debugger
