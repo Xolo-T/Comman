@@ -74,7 +74,7 @@ class Grid{
                 this.context.fill();
             // ---------------------------------------------------------
             // put a new number on the rectangle
-                this.context.font = '35px sans-serif';
+                this.context.font = '35px Patrick Hand';
                 this.context.fillStyle = '#007acc';
                 let size = 49;
             // this.context.fillText(text, startLeft, startTop);
@@ -151,7 +151,8 @@ class Grid{
                     // debugger
                     this.puzzle[i][j] = vals[k];
 
-                    let tile = new Tile(vals[k], i, j, this.boardSize / 9, '#ababab', '30px Permanent Marker');
+                    // let tile = new Tile(vals[k], i, j, this.boardSize / 9, '#ababab', '28px Patrick Hand');
+                    let tile = new Tile(vals[k], i, j, this.boardSize / 9, '#FF5964', '28px Patrick Hand');
                     // debugger
                     this.addToAnimationQueue(tile);
                     // debugger

@@ -102,7 +102,7 @@ function changePuzzle() {
         //     element.style.display = 'none'
         // });
     }else{
-        solveButton.style.display = 'inline-block';
+        solveButton.style.display = 'block';
         animationSpeed.style.display = 'block';
         iterationsDiv.style.display = 'block';
         validityStatus.style.display = 'none';

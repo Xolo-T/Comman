@@ -5,63 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dist/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     
     <title>Comman</title>
 </head>
 
 <body>
-<body>
-    <div class='container'>
-        <h1 class='title'>Hi! I'm Comman</h1>
-        <p>I am a Sudoku "TA"</p>
+    <div class='main-content'>
+        <div>
+            <!-- <h1 class='title'>Hi! I'm Comman <span style='font-size:60px;'>&#129409;</span></h1> -->
+            <h1 class='title'>Hi! I'm Comman <span style='font-size:60px;'>&#128125;</span></h1>
+            <p> And I'm a Sudoku "T.A"</p>
+            <And> Give me any sudoku puzzle and I will tell you if it's valid. And if it
+                 is, I can solve it for you partially of completely.</p>
+            <p> Feel free to slow me down when I am going too fast </p>
+        </div>
+        
         <div class='game-view'>
-            <div class='board'>
-                <!-- <div id="validity-status">
-                    Validity-Status:
-                    <div id='validity'>
-                        invalid hehehe
-                    </div>
-                </div> -->
-                <canvas id="canvas-board" 
-                    width="450" 
-                    height="450" 
-                    style="
-                        border:1px solid #000000;
-                        background-color:white;
-                    "
-                >
-                </canvas>
-                
-            </div>
-            
-            <div id="validity-status">
-                Validity-Status:
-                <div id='validity'>
-                    invalid hehehe
-                </div>
-            </div>
+            <canvas id="canvas-board" 
+                width="450" 
+                height="450" 
+                style="
+                    border:1px solid #000000;
+                    background-color:white;
+                "
+            >
+            </canvas>
 
             <div class='controls'>
-                
-                <div id='controls-buttons'>
-                    <button id='solve'>Solve</button>
-                    <button id='next-puzzle' >New Puzzle</button>
-                </div>
             
-                <fieldset id='animation-speed'>
-                    <legend>Animation Speed</legend>
-                    fast <input id='slider' type='range' min='0' max='200'> slow
-                </fieldset>
+                <div id='controls-buttons'>
+                    
+                    
+                    <fieldset class= 'control-item' id='animation-speed'>
+                        <legend>Animation Speed</legend>
+                        fast <input id='slider' type='range' min='0' max='200'> slow
+                    </fieldset>
+                    <div class= 'control-item' id='iterations-div'>
+                        Iterations:
+                        <span id='iteration-count'>0</span>
+                    </div>
+                    
+                    <button class= 'control-item' id='solve'>Solve</button>
 
-                <div id='iterations-div'>
-                    Iterations:
-                    <span id='iteration-count'>0</span>
+                    <div id="validity-status">
+                        Validity-Status:
+                        <div id='validity'>
+                            invalid hehehe
+                        </div>
+                    </div>
+                
                 </div>
-
+                
+                
+                <button id='next-puzzle'>New Puzzle</button>
                 <!-- <button id='create'> Create A Board </button> -->
-
-                <br /><br />
+            
+                <!-- <br /><br /> -->
+            
             </div>
+            
+        </div>
+
+        <div class="my-details">
+            <button class='link-button'><a href="">LinkedIn</a></button>
+            <button class='link-button'><a href="">Personal Site</a></button>
+            <button class='link-button'><a href="https://github.com/Solomon-T/Comman">Github</a></button>
+        </div>
 
         </div>
     </div>
