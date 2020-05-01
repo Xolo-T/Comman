@@ -2,6 +2,11 @@
     font-family: 'Patrick Hand', cursive;
 }
 
+a {
+    /* color: aquamarine;
+*/
+}
+
 body{
     /* background-color: #35506c;*/
     display: flex;
@@ -18,12 +23,6 @@ body{
 #validity{
      display: inline-block;
      color: red;
-}
-
-#controls-buttons {
-    /* display: flex;
-     justify-content: space-between;
-    */
 }
 
 .game-view {
@@ -53,6 +52,9 @@ button{
 
 .link-button{
     width: fit-content;
+    padding: 41px;
+    border-radius: 9%;
+    padding-top: 14px;
 }
 
 .my-details {
@@ -61,4 +63,8 @@ button{
     justify-content: space-between;
     padding: 15px 0;
     margin: 40px 0;
+}
+
+button.link-button {
+    background-color: cyan;
 }
