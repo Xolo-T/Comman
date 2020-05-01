@@ -8,12 +8,13 @@ Comman uses the common [backtracking algorithm](https://en.wikipedia.org/wiki/Su
 ### MVP
 With Comman, users will be able to:
 * generate a sudoku board 
-* instatntly solve sudoku puzzle
-* Implement solving animation
-* view the number of iterations taken to solve a puzzle
-### Bonus
-* Create a custom board by simply inputing numbers
 * Verifies the validity of a sudoku puzzle
+* Implement solving animation
+* View the number of iterations taken to solve a puzzle
+### Bonus
+* Instantly solve sudoku puzzle (skip animation)
+* Create a custom board by simply inputing numbers
+
 
 ## Wireframes 
 ![](https://github.com/Solomon-T/comman/blob/master/wireframe.png)
