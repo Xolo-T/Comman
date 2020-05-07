@@ -83,7 +83,7 @@ class Grid{
         }
     }
 
-    //---------- Puzzle Solving Algo from https://github.com/momajd ------------------
+    //---------- Puzzle Solving Algo and animation ------------------
     
     renderTile(tile) {
         debugger
