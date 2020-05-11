@@ -96,7 +96,7 @@ function changePuzzle() {
         validityStatus.style.display = 'flex';
         validityStatus.style.justifyContent = 'center';
         controlsButtonsDiv.style.justifyContent = 'flex-end';
-        debugger
+        // debugger
 
         // validOnlyElements.forEach(element => {
         //     element.style.display = 'none'
@@ -118,7 +118,7 @@ function changePuzzle() {
 }
 
 function solve() {
-    debugger
+    // debugger
     // hideInstructions();
     // myGrid.deactivateInput();
     // myGrid.board.solveSudoku();

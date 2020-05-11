@@ -86,7 +86,7 @@ class Grid{
     //---------- Puzzle Solving Algo and animation ------------------
     
     renderTile(tile) {
-        debugger
+        // debugger
         this.clearTile(tile);
         let size = tile.tileSize;
         this.context.font = tile.font;
@@ -140,7 +140,7 @@ class Grid{
     }
 
     solveSudoku() {
-        debugger
+        // debugger
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 9; j++) {
                 if (this.puzzle[i][j] !== 0) { continue; }
@@ -173,7 +173,7 @@ class Grid{
     animate() {
         // debugger
         if (this.animationQueue.length === 0 || this.paused) { 
-            console.log(this.animationQueue)
+            // console.log(this.animationQueue)
             return; 
         }
         this.updateIterationCount();
