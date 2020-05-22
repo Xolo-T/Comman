@@ -172,10 +172,10 @@ class Grid{
 
     animate() {
         // debugger
-        if (this.animationQueue.length === 0 || this.paused) { 
-            // console.log(this.animationQueue)
-            return; 
-        }
+        // if (this.animationQueue.length === 0 || this.paused) { 
+        //     // console.log(this.animationQueue)
+        //     return; 
+        // }
         this.updateIterationCount();
         let tile = this.animationQueue.shift();
 
