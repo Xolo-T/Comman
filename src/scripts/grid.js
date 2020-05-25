@@ -178,8 +178,10 @@ class Grid{
 
 
 
-        
 
+
+
+        
         this.updateIterationCount();
         let tile = this.animationQueue.shift();
 
