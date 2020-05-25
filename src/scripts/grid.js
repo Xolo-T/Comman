@@ -175,6 +175,8 @@ class Grid{
         if (this.animationQueue.length === 0 || this.paused) { 
             return; 
         }
+
+
         
         this.updateIterationCount();
         let tile = this.animationQueue.shift();
