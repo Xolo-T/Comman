@@ -14,7 +14,7 @@ class Grid{
         this.animationCount = 0;
     }
     
-    render(){
+    render(){ // draws board just the grid lines
         // thick grid lines
         for (let i = 0; i < 9; i++) {
             this.context.beginPath();

@@ -14,7 +14,10 @@ const solveButton = document.getElementById('solve');
 solveButton.onclick = solve;
 
 const nextPuzzleButton = document.getElementById('next-puzzle');
-nextPuzzleButton.onclick = changePuzzle
+nextPuzzleButton.onclick = changePuzzle;
+
+const creatPuzzleButton = document.getElementById('create-puzzle');
+// nextPuzzleButton.onclick = changePuzzle
 
 const animationSpeed = document.getElementById('animation-speed')
 const iterationsDiv = document.getElementById('iterations-div')
@@ -77,8 +80,11 @@ function isValidSudoku(sudoku) {
 const validity = document.getElementById('validity');
 validity.innerText = isValidSudoku(puzzle);
 
-function changePuzzle() {
+function changePuzzle() { // resets the board with a new puzzle
     // debugger
+    myGrid.paused = true; // fixes a dug that if you change a puzzle it doesnt keep solving the previous one
+    myGrid.resetIterationCount();
+
     if (puzzleIndex < (puzzles.length - 1)) {
         puzzleIndex += 1;
     } else {
@@ -136,3 +142,6 @@ function solve() {
 
 // var solveButton = document.getElementById('solve');
 // solveButton.onclick = solve;
+
+
+
