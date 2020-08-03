@@ -1,138 +1,80 @@
-import Grid from "./scripts/grid";
-import puzzleArrays from "./scripts/puzzles"
+import View from "./scripts/view";
+import BoardStore from "./scripts/board_store"
 import "./styles/index.scss"
-
-const canvas = document.getElementById('canvas-board');
-const context = canvas.getContext('2d');
-
-
-let puzzleIndex = 0;
-let changeChecker = 0;
-const puzzles = puzzleArrays;
 
 const solveButton = document.getElementById('solve');
 solveButton.onclick = solve;
 
 const nextPuzzleButton = document.getElementById('next-puzzle');
-nextPuzzleButton.onclick = changePuzzle
+nextPuzzleButton.onclick = resetBoard;
 
-const animationSpeed = document.getElementById('animation-speed')
-const iterationsDiv = document.getElementById('iterations-div')
-const validityStatus = document.getElementById('validity-status')
-const controlsButtonsDiv = document.getElementById('controls-buttons')
+const creatPuzzleButton = document.getElementById('create-puzzle');
+creatPuzzleButton.onclick = activateInput;
 
-const puzzle = puzzles[puzzleIndex];
-// debugger
-// const myGrid = new Grid(context, puzzle)
-let myGrid = new Grid(context, puzzles[puzzleIndex])
-myGrid.render()
-myGrid.fill();
+const animationSpeed = document.getElementById('animation-speed');
+const iterationsDiv = document.getElementById('iterations-div');
+const controlsButtonsDiv = document.getElementById('controls-buttons');
 
+/////////////////////////////////////////////////////////////////////////////////////////
 
-function isValidSudoku(sudoku) {
-    // debugger
-    const rows = {
-        0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: []
-    };
-    const cols = {
-        0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: []
-    };
-    const SubGrid = {
-        0:[], 1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[]
-    };
+const canvas = document.getElementById('canvas-board');
+const context = canvas.getContext('2d');
+var boardSize = 450;
+var boards = BoardStore;
+// console.log(boards);
+
+Array.prototype.dupBoard = function () {
+    let newBoard = new Array(9);
+    for (let i = 0; i < 9; i++) { newBoard[i] = (new Array(9)); }
 
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-            const currentValue = sudoku[i][j]
-            if (currentValue !== 0){
-                // debugger
-                // Cheking the rows
-                if (rows[i].includes(currentValue)) {
-                    return false
-                }else{
-                    rows[i].push(currentValue)
-                }
-                // Cheking the colums
-                if (cols[j].includes(currentValue)) {
-                    return false
-                } else {
-                    cols[j].push(currentValue)
-                }
-                // Cheking the subgrig some math will be involved
-                // const k = 'bananas';
-                const k = Math.floor((j) / 3) + Math.floor((i) / 3) * 3
-                // debugger
-                if (SubGrid[k].includes(currentValue)) {
-                    return false
-                } else {
-                    SubGrid[k].push(currentValue)
-                }
-                // debugger
-            }
-        }   
+            newBoard[i][j] = this[i][j].slice();
+        }
     }
-    return true
-}
+    return newBoard;
+};
 
-const validity = document.getElementById('validity');
-validity.innerText = isValidSudoku(puzzle);
 
-function changePuzzle() {
-    // debugger
-    if (puzzleIndex < (puzzles.length - 1)) {
-        puzzleIndex += 1;
-    } else {
-        puzzleIndex = 0;
-    }
-    // debugger
-    myGrid = new Grid(context, puzzles[puzzleIndex])
-    // debugger
-    myGrid.fill();
-    validity.innerText = isValidSudoku(puzzles[puzzleIndex]);
-    if (!isValidSudoku(puzzles[puzzleIndex])) {
-        solveButton.style.display = 'none';
-        animationSpeed.style.display = 'none';
-        iterationsDiv.style.display = 'none';
-        validityStatus.style.display = 'flex';
-        validityStatus.style.justifyContent = 'center';
-        controlsButtonsDiv.style.justifyContent = 'flex-end';
-        // debugger
-
-        // validOnlyElements.forEach(element => {
-        //     element.style.display = 'none'
-        // });
-    }else{
-        solveButton.style.display = 'block';
-        animationSpeed.style.display = 'block';
-        iterationsDiv.style.display = 'block';
-        validityStatus.style.display = 'none';
-        controlsButtonsDiv.style.justifyContent = 'space-between';
-        // validOnlyElements.forEach(element => {
-        //     element.style.display = 'block'
-        // });
-    }
-
-    // myGrid.paused = !myGrid.paused;
-    document.getElementById('solve').textContent = 'Solve';
-
-}
+var view = new View(context, boardSize, boards[0].dupBoard());
+view.drawBoard();
 
 function solve() {
-    // debugger
-    // hideInstructions();
-    // myGrid.deactivateInput();
-    // myGrid.board.solveSudoku();
-    myGrid.solveSudoku();
-    // myGrid.animate();
-    if (myGrid.paused) {
-        myGrid.paused = !myGrid.paused;
-        myGrid.animate();
+    hideInstructions();
+    view.deactivateInput();
+    view.board.solve();
+
+    if (view.paused) {
+        view.paused = !view.paused;
+        view.animate();
         document.getElementById('solve').textContent = 'Pause';
     } else {
-        myGrid.paused = !myGrid.paused;
+        view.paused = !view.paused;
         document.getElementById('solve').textContent = 'Solve';
     }
 }
 
-// var solveButton = document.getElementById('solve');
-// solveButton.onclick = solve;
+function resetBoard() {
+    view.paused = true;
+    view.deactivateInput();
+    view.resetIterationCount();
+    hideInstructions();
+    document.getElementById('solve').textContent = 'Solve';
+
+    var randIdx = Math.floor(Math.random() * (boards.length));
+    view = new View(context, boardSize, boards[randIdx].dupBoard());
+    view.drawBoard();
+}
+
+function activateInput() {
+    view.resetIterationCount();
+    creatPuzzleButton.blur();
+    document.getElementById('solve').textContent = 'Solve';
+    // document.getElementsByClassName('instructions-container')[0].style.visibility = 'visible';
+    view.activateInput();
+}
+
+function hideInstructions() {
+    // document.getElementsByClassName('instructions-container')[0].style.visibility = 'hidden';
+}
+
