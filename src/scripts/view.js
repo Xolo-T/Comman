@@ -2,6 +2,8 @@ import Board from './board';
 import Tile from './tile';
 import Cursor from "./cursor";
 
+import swal from "sweetalert";
+
 class View {
     constructor(context, boardSize, board) {
         this.context = context;
@@ -142,7 +144,20 @@ class View {
             this.board.assignVal(cursor.row, cursor.col, e.key);
 
             if (!this.board.isValidPuzzle()) {
-                alert("That's not a valid board!");
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // swal(
+                //   "",
+                //   "",
+                //   ""
+                // );
+                swal({
+                  title: "Sorry, Invalid Puzzle!",
+                  text:
+                    "For a Sudoku puzzle to be valid, a number should appear only once in its row, column, and subgrid",
+                  icon: "warning",
+                  button: "Ooh, ok!",
+                });
+                // window.alert("&#128125;");
                 this.board.assignVal(cursor.row, cursor.col, ".");
                 return;
             }
